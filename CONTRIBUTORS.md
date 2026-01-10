@@ -9,3 +9,10 @@ SPDX-License-Identifier: GFDL-1.3-or-later
 
 - module author: Mirian Margiani
 - original video player author: Leszek Lesner
+
+## Translations
+
+- Frank Paul Silye
+- Jiří Vírava
+
+- (Managed via Weblate's Languages add-on)
