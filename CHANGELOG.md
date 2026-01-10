@@ -5,6 +5,11 @@ SPDX-License-Identifier: GFDL-1.3-or-later
 
 # Changelog
 
+## 1.0.11 (2026-01-10)
+
+- Added translations: Vietnamese
+- Updated translations: Czech, Norwegian Bokmål
+
 ## 1.0.10 (2025-12-23)
 
 - Fixed packaging to actually include `opal.pri` and `.gitignore` files for
