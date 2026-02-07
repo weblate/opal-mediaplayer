@@ -1,6 +1,6 @@
 //@ This file is part of opal-mediaplayer.
 //@ https://github.com/Pretty-SFOS/opal-mediaplayer
-//@ SPDX-FileCopyrightText: 2024 Mirian Margiani
+//@ SPDX-FileCopyrightText: 2024-2026 Mirian Margiani
 //@ SPDX-FileCopyrightText: 2013-2020 Leszek Lesner
 //@ SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -21,6 +21,7 @@ Page {
     property bool repeat: false
     property bool continueInBackground: false
     property bool enableDarkBackground: true
+    property bool enableBlackBackground: false  // for OLED displays
 
     property alias mprisAppId: mprisPlayer.identity
 
@@ -68,18 +69,20 @@ Page {
 
     Loader {
         z: -1000
-        sourceComponent: enableDarkBackground ? backgroundComponent : null
+        sourceComponent: (enableDarkBackground || enableBlackBackground) ? backgroundComponent : null
         anchors.fill: parent
 
         Component {
             id: backgroundComponent
 
             Rectangle {
-                visible: enableDarkBackground
-                color: Theme.colorScheme === Theme.LightOnDark ?
-                           Qt.darker(Theme.highlightDimmerColor, 4.0) :
-                           Qt.darker(Theme.highlightDimmerColor, 8.0)
-                opacity: 0.98
+                visible: enableDarkBackground || enableBlackBackground
+                color: enableBlackBackground ? "black" : (
+                    Theme.colorScheme === Theme.LightOnDark ?
+                        Qt.darker(Theme.highlightDimmerColor, 4.0) :
+                        Qt.darker(Theme.highlightDimmerColor, 8.0)
+                )
+                opacity: enableBlackBackground ? 1.0 : 0.98
             }
         }
     }
